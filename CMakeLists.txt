@@ -12,11 +12,12 @@ else()
 endif()
 
 if(CONFIG_SERVER)
-	message("configuring server from source dir to build dir")
+	message("configuring server from ${CMAKE_CURRENT_SOURCE_DIR} to
+${CMAKE_INSTALL_PREFIX} ")
 endif()
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/python DESTINATION ${CMAKE_INSTALL_PREFIX}/bin ) 
 set(RCM_SERVER_DIR ${CMAKE_INSTALL_PREFIX}/bin/python)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/python/Desktop_setup/paraview3.14.desktop
-${RCM_SERVER_DIR}/paraview3.14.desktop @ONLY)
+${RCM_SERVER_DIR}/Desktop_setup/paraview3.14.desktop @ONLY)
 
