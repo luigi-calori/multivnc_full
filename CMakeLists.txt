@@ -16,3 +16,7 @@ if(CONFIG_SERVER)
 endif()
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/python DESTINATION ${CMAKE_INSTALL_PREFIX}/bin ) 
+set(RCM_SERVER_DIR ${CMAKE_INSTALL_PREFIX}/bin/python)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/python/Desktop_setup/paraview3.14.desktop
+${RCM_SERVER_DIR}/paraview3.14.desktop @ONLY)
+
