@@ -18,6 +18,18 @@ endif()
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/server DESTINATION ${CMAKE_INSTALL_PREFIX}/bin ) 
 set(RCM_SERVER_DIR ${CMAKE_INSTALL_PREFIX}/bin/server)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/server/Desktop_setup/paraview3.14.desktop
-${RCM_SERVER_DIR}/Desktop_setup/paraview3.14.desktop @ONLY)
+
+file(MAKE_DIRECTORY ${RCM_SERVER_DIR}/Desktop_setup/common_tools)
+foreach(desktop_file paraview3.14 paraview_demo1 UnigineGraphicTest paraview3.98 tecplot Vaa3D)
+  configure_file(
+    ${CMAKE_CURRENT_SOURCE_DIR}/server/Desktop_setup/common_tools.in/${desktop_file}.desktop
+    ${RCM_SERVER_DIR}/Desktop_setup/common_tools/${desktop_file}.desktop 
+  @ONLY)
+endforeach()
+configure_file(
+  ${CMAKE_CURRENT_SOURCE_DIR}/server/Desktop_setup/common_tools.in/CommonTools.desktop
+  ${RCM_SERVER_DIR}/Desktop_setup/CommonTools.desktop 
+@ONLY)
+
+
 
