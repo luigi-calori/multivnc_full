@@ -150,6 +150,8 @@ if is_darwin:
 
     class MacExcludeList(object):
         def search(self, libname):
+            if "/Tcl" in libname or "/Tk" in libname:
+               return False
             return util.in_system_path(libname)
 
     exclude_list = MacExcludeList()
